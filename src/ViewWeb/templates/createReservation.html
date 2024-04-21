@@ -6,7 +6,19 @@
     <title>Create Reservation</title>
 </head>
 <body>
-<h1>Create Reservation Page</h1>
+<h1>Create Reservation</h1>
+<form action="/createReservation" method="POST">
+    <label for="roomId">Room ID:</label><br>
+    <input type="text" id="roomId" name="roomId"><br><br>
+
+    <label for="startTime">Start Time:</label><br>
+    <input type="date" id="startTime" name="startTime"><br><br>
+
+    <label for="endTime">End Time:</label><br>
+    <input type="date" id="endTime" name="endTime"><br><br>
+
+    <input type="submit" value="Create Reservation">
+</form>
 <a href="/">Back to Home</a>
 </body>
 </html>
