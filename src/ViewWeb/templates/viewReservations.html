@@ -8,5 +8,21 @@
 <body>
 <h1>View Reservations Page</h1>
 <a href="/">Back to Home</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Romm ID</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+    </tr>
+    {{range .}}
+    <tr>
+        <td>{{.Id}}</td>
+        <td>{{.RoomId}}</td>
+        <td>{{.StartTime}}</td>
+        <td>{{.EndTime}}</td>
+    </tr>
+    {{end}}
+</table>
 </body>
 </html>
