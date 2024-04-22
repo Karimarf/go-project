@@ -1,11 +1,15 @@
 package main
 
 import (
+	"os"
 	menu "src/Controller"
 	view "src/ViewWeb"
 )
 
 func main() {
-	view.Viewpage()
-	menu.DisplayMenu()
+	if len(os.Args) > 1 && os.Args[1] == "web" {
+		view.Viewpage()
+	} else {
+		menu.DisplayMenu()
+	}
 }

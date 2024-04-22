@@ -19,13 +19,22 @@ func AddReservation() {
 	var endDate string
 	fmt.Scan(&endDate)
 
-	now := time.Now()
-	if startDate < now.Format("02-01-2006") || endDate < now.Format("02-01-2006") {
-		fmt.Println("La date de début et de fin doivent être supérieures à la date d'aujourd'hui")
+	var startTimeDate, err = time.Parse("02-01-2006", startDate)
+	if err != nil {
+		fmt.Println("La date de début est invalide")
 		return
 	}
-	if startDate > endDate {
+	var endTimeDate, err2 = time.Parse("02-01-2006", endDate)
+	if err2 != nil {
+		fmt.Println("La date de fin est invalide")
+		return
+	}
+	if startTimeDate.After(endTimeDate) {
 		fmt.Println("La date de début doit être avant la date de fin")
+		return
+	}
+	if startTimeDate.Before(time.Now()) {
+		fmt.Println("La date de début doit être après aujourd'hui")
 		return
 	}
 
