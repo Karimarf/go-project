@@ -3,10 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cancel Reservation</title>
+    <title>View Reservations</title>
 </head>
 <body>
-<h1>Cancel Reservation Page</h1>
+<h1>View Reservations Page</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Room ID</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Delete</th>
+    </tr>
+    {{range .}}
+    <tr>
+        <td>{{.Id}}</td>
+        <td>{{.RoomId}}</td>
+        <td>{{.StartTime}}</td>
+        <td>{{.EndTime}}</td>
+        <td>
+            <form action="/deleteReservation" method="post">
+                <input type="hidden" name="id" value="{{.Id}}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {{end}}
+</table>
 <a href="/">Back to Home</a>
 </body>
 </html>
