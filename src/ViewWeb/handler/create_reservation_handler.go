@@ -5,7 +5,6 @@ import (
 	"net/http"
 	reservation "src/Repository"
 	"strconv"
-	"time"
 )
 
 func CreateReservationHandler(w http.ResponseWriter, r *http.Request) {
@@ -27,31 +26,16 @@ func CreateReservationHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		roomIdStr := r.Form.Get("roomId")
+		roomId := r.Form.Get("roomId")
 		startTime := r.Form.Get("startTime")
 		endTime := r.Form.Get("endTime")
 
-		roomId, err := strconv.Atoi(roomIdStr)
+		roomIdStr, err := strconv.Atoi(roomId)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusBadRequest)
 			return
 		}
-
-		parsedStartTime, err := time.Parse("2006-01-02", startTime)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusBadRequest)
-			return
-		}
-		formattedStartTime := parsedStartTime.Format("02-01-2006")
-
-		parsedEndTime, err := time.Parse("2006-01-02", endTime)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusBadRequest)
-			return
-		}
-		formattedEndTime := parsedEndTime.Format("02-01-2006")
-
-		reservation.CreateReservation(roomId, formattedStartTime, formattedEndTime)
+		reservation.CreateReservation(roomIdStr, startTime, endTime)
 
 		http.Redirect(w, r, "/createReservation", http.StatusSeeOther)
 	} else {

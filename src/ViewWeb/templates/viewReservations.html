@@ -14,7 +14,6 @@
         <th>Room ID</th>
         <th>Start Date</th>
         <th>End Date</th>
-        <th>Action</th>
     </tr>
     {{range .}}
     <tr>
@@ -22,12 +21,6 @@
         <td>{{.RoomId}}</td>
         <td>{{.StartTime}}</td>
         <td>{{.EndTime}}</td>
-        <td>
-            <form action="/deleteReservation" method="post">
-                <input type="hidden" name="id" value="{{.Id}}">
-                <button type="submit">Delete</button>
-            </form>
-        </td>
     </tr>
     {{end}}
 </table>
