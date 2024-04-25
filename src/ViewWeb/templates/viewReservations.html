@@ -8,6 +8,7 @@
 <body>
 <h1>View Reservations Page</h1>
 
+<h2>View reservation</h2>
 <table>
     <tr>
         <th>ID</th>
@@ -24,6 +25,13 @@
     </tr>
     {{end}}
 </table>
+
+<h2>Delete Reservation</h2>
+<form action="/deleteReservation" method="post">
+    <input type="number" id="reservationId" name="id">
+    <button type="submit">Delete</button>
+</form>
+
 <a href="/">Back to Home</a>
 </body>
 </html>
