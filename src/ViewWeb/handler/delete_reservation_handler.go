@@ -11,14 +11,14 @@ func DeleteReservationHandler(w http.ResponseWriter, r *http.Request) {
 
 	idStr := r.Form.Get("id")
 	id, err := strconv.Atoi(idStr)
-
-	fmt.Printf("ID: %d\n", id)
-
-	err = Repository.DeleteReservation(id)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Error(w, "Invalid reservation ID", http.StatusBadRequest)
 		return
 	}
+
+	fmt.Printf("", id)
+
+	Repository.DeleteReservation(id)
 
 	http.Redirect(w, r, "/viewReservations", http.StatusSeeOther)
 }
