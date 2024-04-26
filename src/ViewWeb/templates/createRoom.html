@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter une chambre</title>
+</head>
+<body>
+<h1>Ajouter une chambre</h1>
+<form action="/createRoom" method="POST">
+    <label for="name">Nom de la chambre:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label for="capacity">Capacité:</label><br>
+    <input type="number" id="capacity" name="capacity"><br>
+    <label for="description">Description:</label><br>
+    <textarea id="description" name="description"></textarea><br><br>
+    <input type="submit" value="Ajouter">
+</form>
+<a href="/">Back to Home</a>
+</body>
+</html>

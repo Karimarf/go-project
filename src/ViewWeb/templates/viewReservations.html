@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Reservations</title>
+</head>
+<body>
+<h1>View Reservations Page</h1>
+
+<h2>View reservation</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Room ID</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+    </tr>
+    {{range .}}
+    <tr>
+        <td>{{.Id}}</td>
+        <td>{{.RoomId}}</td>
+        <td>{{.StartTime}}</td>
+        <td>{{.EndTime}}</td>
+    </tr>
+    {{end}}
+</table>
+
+<h2>Delete Reservation</h2>
+<form action="/deleteReservation" method="post">
+    <input type="number" id="reservationId" name="id">
+    <button type="submit">Delete</button>
+</form>
+
+<a href="/">Back to Home</a>
+</body>
+</html>
